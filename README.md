@@ -168,6 +168,12 @@ src/
 
 - `GET /summaries/monthly?month=X&year=YYYY` - Obter resumo financeiro mensal
 
+### Importar collection com os endpoints da API
+
+- Baixe o arquivo json da collection: [Finance API Collection.postman_collection.json](./postman/Finance_API_Collection.postman_collection.json)
+
+- importe o arquivo na ferramenta de requisição de sua preferencia.
+
 ## Testes
 
 Execute os testes unitários com o comando:

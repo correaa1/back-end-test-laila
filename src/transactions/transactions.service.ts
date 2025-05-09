@@ -1,6 +1,6 @@
 import { Injectable, NotFoundException, ForbiddenException, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, Between } from 'typeorm';
 import { Transaction } from './entities/transaction.entity';
 import { CreateTransactionDto } from './dto/create-transaction.dto';
 import { UpdateTransactionDto } from './dto/update-transaction.dto';
@@ -29,7 +29,14 @@ export class TransactionsService {
     return this.transactionsRepository.save(transaction);
   }
 
-  async findAll(userId: string, filters: { categoryId?: string, type?: string } = {}) {
+  async findAll(userId: string, filters: { 
+    categoryId?: string, 
+    type?: string,
+    startDate?: string,
+    endDate?: string,
+    page?: number,
+    pageSize?: number
+  } = {}) {
     this.logger.log(`Consultando transações do usuário ${userId} com filtros: ${JSON.stringify(filters)}`);
     
     // Criar o objeto de condições para a consulta
@@ -44,11 +51,23 @@ export class TransactionsService {
       where.type = filters.type;
     }
     
+    // Adicionar filtro por intervalo de datas, se fornecido
+    if (filters.startDate && filters.endDate) {
+      this.logger.log(`Filtrando transações por data: ${filters.startDate} a ${filters.endDate}`);
+      where.date = Between(new Date(filters.startDate), new Date(filters.endDate));
+    }
+    
+    // Configurar paginação se fornecida
+    const take = filters.pageSize ? filters.pageSize : undefined;
+    const skip = (filters.page && filters.pageSize) ? (filters.page - 1) * filters.pageSize : undefined;
+    
     // Usar a abordagem padrão com relations, que é mais simples e legível
     const transactions = await this.transactionsRepository.find({
       where,
       relations: ['category'],
-      order: { date: 'DESC' }
+      order: { date: 'DESC' },
+      take,
+      skip
     });
     
     return transactions;

@@ -5,10 +5,13 @@ import { UpdateTransactionDto } from './dto/update-transaction.dto';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard';
 import { GetUser } from '../auth/decorators/get-user.decorator';
 import { User } from '../users/entities/user.entity';
+import { Logger } from '@nestjs/common';
 
 @Controller('transactions')
 @UseGuards(JwtAuthGuard)
 export class TransactionsController {
+  private readonly logger = new Logger(TransactionsController.name);
+  
   constructor(private readonly transactionsService: TransactionsService) {}
 
   @Post()
@@ -24,8 +27,21 @@ export class TransactionsController {
     @GetUser() user: User,
     @Query('categoryId') categoryId?: string,
     @Query('type') type?: string,
+    @Query('startDate') startDate?: string,
+    @Query('endDate') endDate?: string,
+    @Query('page') page?: number,
+    @Query('pageSize') pageSize?: number,
   ) {
-    return this.transactionsService.findAll(user.id, { categoryId, type });
+    this.logger.log(`Buscando transações com filtros: categoryId=${categoryId}, type=${type}, startDate=${startDate}, endDate=${endDate}, page=${page}, pageSize=${pageSize}`);
+    
+    return this.transactionsService.findAll(user.id, { 
+      categoryId, 
+      type,
+      startDate,
+      endDate,
+      page: page ? Number(page) : undefined,
+      pageSize: pageSize ? Number(pageSize) : undefined
+    });
   }
 
   @Get(':id')
