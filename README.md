@@ -229,11 +229,3 @@ A autenticação JWT foi implementada porque:
 - **Validação robusta** - Todas as entradas são validadas antes de processamento
 - **Filtragem e paginação** - Suporte para busca eficiente de dados
 
-## Melhorias Futuras
-
-- Implementação de filtros avançados para transações
-- Paginação de resultados
-- Dashboard com gráficos e estatísticas
-- Upload de comprovantes para transações
-- Categorização automática de transações
-- Exportação de relatórios em CSV/PDF
