@@ -1,0 +1,451 @@
+{
+	"info": {
+		"_postman_id": "11dd138c-09d1-4ace-975a-84b63272791b",
+		"name": "Teste laila",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29992377"
+	},
+	"item": [
+		{
+			"name": "register",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\":\"Bruno\",\r\n    \"email\":\"bruno@teste.com\",\r\n    \"password\":\"teste@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/auth/register",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"auth",
+						"register"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "login",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\":\"bruno@teste.com\",\r\n    \"password\":\"teste@123\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/auth/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"auth",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YWZiYzg2MC03ZGEzLTQ1YzYtOTc1Yi0xMGM3ZjNkODUyMGIiLCJlbWFpbCI6ImJydW5vQHRlc3RlLmNvbSIsImlhdCI6MTc0NjYyOTYzOCwiZXhwIjoxNzQ2NjI5NzI0fQ._Ts3lICQBfvJMeZ4Z--q3TKmclTm9TcIGcDVKR4xqV8",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"name\": \"Salário\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YWZiYzg2MC03ZGEzLTQ1YzYtOTc1Yi0xMGM3ZjNkODUyMGIiLCJlbWFpbCI6ImJydW5vQHRlc3RlLmNvbSIsImlhdCI6MTc0NjY0MjQyMSwiZXhwIjoxNzQ2NzI4ODIxfQ.bJ2lYv2fNDWYarI9gMCAaWp53nQXJ5OLoRVapBN0ccE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"name\": \"Investimentos\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/categories/4863e543-e5db-4853-b72c-eaa41443149e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"categories",
+						"4863e543-e5db-4853-b72c-eaa41443149e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YWZiYzg2MC03ZGEzLTQ1YzYtOTc1Yi0xMGM3ZjNkODUyMGIiLCJlbWFpbCI6ImJydW5vQHRlc3RlLmNvbSIsImlhdCI6MTc0NjY0MjQyMSwiZXhwIjoxNzQ2NzI4ODIxfQ.bJ2lYv2fNDWYarI9gMCAaWp53nQXJ5OLoRVapBN0ccE",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"name\": \"Investimentos\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/categories/4863e543-e5db-4853-b72c-eaa41443149e",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"categories",
+						"4863e543-e5db-4853-b72c-eaa41443149e"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories ID:",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YWZiYzg2MC03ZGEzLTQ1YzYtOTc1Yi0xMGM3ZjNkODUyMGIiLCJlbWFpbCI6ImJydW5vQHRlc3RlLmNvbSIsImlhdCI6MTc0NjYzMDM4MSwiZXhwIjoxNzQ2NjMwNDY3fQ.MzEMos6r9OrRs_aCaaLf35PXlFqgWvNak6V6biPl9SE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "categories Copy",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YWZiYzg2MC03ZGEzLTQ1YzYtOTc1Yi0xMGM3ZjNkODUyMGIiLCJlbWFpbCI6ImJydW5vQHRlc3RlLmNvbSIsImlhdCI6MTc0NjYzMDM4MSwiZXhwIjoxNzQ2NjMwNDY3fQ.MzEMos6r9OrRs_aCaaLf35PXlFqgWvNak6V6biPl9SE",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/categories",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"categories"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transactions",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YWZiYzg2MC03ZGEzLTQ1YzYtOTc1Yi0xMGM3ZjNkODUyMGIiLCJlbWFpbCI6ImJydW5vQHRlc3RlLmNvbSIsImlhdCI6MTc0NjYzMDc2MSwiZXhwIjoxNzQ2NzE3MTYxfQ.jfS9z_x9_81XyQLkJhUICpiysJqD-GgoCoS8hakJ0BI",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"title\": \"Salário Mensal\",\r\n    \"amount\": 3000,\r\n    \"type\": \"RECEITA\",\r\n    \"date\": \"2025-07-05\",\r\n    \"categoryId\": \"4863e543-e5db-4853-b72c-eaa41443149e\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transactions",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "PUT",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOGEwZTE3Ni1iMGM4LTRkNzgtOTkxYy0wYzAxOGYzY2I3ZGYiLCJlbWFpbCI6ImNhcmxpbkB0ZXN0ZS5jb20iLCJpYXQiOjE3NDY2NDExNDIsImV4cCI6MTc0NjcyNzU0Mn0.1iMPdS5evRY2LR6xwhe9L4F5mvSn5bXhjxu1LdB0ea0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"title\": \"Salário Mensal\",\r\n    \"amount\": 3500,\r\n    \"type\": \"RECEITA\",\r\n    \"date\": \"2025-07-05\",\r\n    \"categoryId\": \"cde81520-30ea-4066-af48-5958a5312723\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/transactions/7949573c-42d0-4d09-885a-84a0261bd370",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"transactions",
+						"7949573c-42d0-4d09-885a-84a0261bd370"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transactions",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "DELETE",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIwOGEwZTE3Ni1iMGM4LTRkNzgtOTkxYy0wYzAxOGYzY2I3ZGYiLCJlbWFpbCI6ImNhcmxpbkB0ZXN0ZS5jb20iLCJpYXQiOjE3NDY2NDExNDIsImV4cCI6MTc0NjcyNzU0Mn0.1iMPdS5evRY2LR6xwhe9L4F5mvSn5bXhjxu1LdB0ea0",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "  {\r\n    \"title\": \"Salário Mensal\",\r\n    \"amount\": 3500,\r\n    \"type\": \"RECEITA\",\r\n    \"date\": \"2025-07-05\",\r\n    \"categoryId\": \"cde81520-30ea-4066-af48-5958a5312723\"\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:3001/transactions/7949573c-42d0-4d09-885a-84a0261bd370",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"transactions",
+						"7949573c-42d0-4d09-885a-84a0261bd370"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transactions",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YWZiYzg2MC03ZGEzLTQ1YzYtOTc1Yi0xMGM3ZjNkODUyMGIiLCJlbWFpbCI6ImJydW5vQHRlc3RlLmNvbSIsImlhdCI6MTc0NjYzMDc2MSwiZXhwIjoxNzQ2NzE3MTYxfQ.jfS9z_x9_81XyQLkJhUICpiysJqD-GgoCoS8hakJ0BI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "transactions ID:",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YWZiYzg2MC03ZGEzLTQ1YzYtOTc1Yi0xMGM3ZjNkODUyMGIiLCJlbWFpbCI6ImJydW5vQHRlc3RlLmNvbSIsImlhdCI6MTc0NjYzMDc2MSwiZXhwIjoxNzQ2NzE3MTYxfQ.jfS9z_x9_81XyQLkJhUICpiysJqD-GgoCoS8hakJ0BI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/transactions",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"transactions"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "summaries",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "Authorization",
+						"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2YWZiYzg2MC03ZGEzLTQ1YzYtOTc1Yi0xMGM3ZjNkODUyMGIiLCJlbWFpbCI6ImJydW5vQHRlc3RlLmNvbSIsImlhdCI6MTc0NjYzMDc2MSwiZXhwIjoxNzQ2NzE3MTYxfQ.jfS9z_x9_81XyQLkJhUICpiysJqD-GgoCoS8hakJ0BI",
+						"type": "text"
+					}
+				],
+				"url": {
+					"raw": "http://localhost:3001/summaries/monthly?month=5&year=2025",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "3001",
+					"path": [
+						"summaries",
+						"monthly"
+					],
+					"query": [
+						{
+							"key": "month",
+							"value": "5"
+						},
+						{
+							"key": "year",
+							"value": "2025"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
