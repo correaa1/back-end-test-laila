@@ -1,99 +1,239 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="120" alt="Nest Logo" /></a>
-</p>
+# Gerenciador de Finanças Pessoais - API
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+Este projeto é uma API REST para um sistema de gerenciamento de finanças pessoais, desenvolvido como parte de um teste técnico. O sistema permite que os usuários gerenciem suas receitas e despesas, categorizem seus lançamentos financeiros e visualizem resumos mensais de suas finanças.
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg" alt="Donate us"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow" alt="Follow us on Twitter"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Tecnologias Utilizadas
 
-## Description
+- **Backend**: Node.js com NestJS
+- **Banco de Dados**: PostgreSQL
+- **ORM**: TypeORM
+- **Autenticação**: JWT (JSON Web Token)
+- **Testes**: Jest
+- **Docker**: Docker e Docker Compose para containerização
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Arquitetura
 
-## Project setup
+O projeto segue uma arquitetura modular orientada a domínio, onde cada módulo representa uma entidade ou funcionalidade do sistema:
 
-```bash
-$ npm install
-```
+- **Auth**: Autenticação e registro de usuários
+- **Users**: Gerenciamento de usuários
+- **Categories**: Gerenciamento de categorias
+- **Transactions**: Gerenciamento de lançamentos financeiros
+- **Summaries**: Relatórios e resumos financeiros
 
-## Compile and run the project
+### Entidades e Relacionamentos
 
-```bash
-# development
-$ npm run start
+- **User**: Representa um usuário do sistema
+- **Category**: Representa uma categoria de lançamento financeiro (pertence a um usuário)
+- **Transaction**: Representa um lançamento financeiro (pertence a um usuário e a uma categoria)
 
-# watch mode
-$ npm run start:dev
+## Funcionalidades
 
-# production mode
-$ npm run start:prod
-```
+1. **Autenticação**
+   - Registro de novos usuários
+   - Login com geração de token JWT
+   - Proteção de rotas com middleware de autenticação
 
-## Run tests
+2. **Categorias**
+   - Criação, listagem, atualização e remoção de categorias
+   - Cada usuário gerencia suas próprias categorias
 
-```bash
-# unit tests
-$ npm run test
+3. **Lançamentos Financeiros**
+   - Criação, listagem, atualização e remoção de lançamentos
+   - Cada lançamento tem título, valor, tipo (receita ou despesa), categoria e data
 
-# e2e tests
-$ npm run test:e2e
+4. **Resumo Mensal**
+   - Visualização do resumo financeiro mensal
+   - Total de receitas, total de despesas e saldo do mês
 
-# test coverage
-$ npm run test:cov
-```
+## Execução Rápida com Docker
 
-## Deployment
-
-When you're ready to deploy your NestJS application to production, there are some key steps you can take to ensure it runs as efficiently as possible. Check out the [deployment documentation](https://docs.nestjs.com/deployment) for more information.
-
-If you are looking for a cloud-based platform to deploy your NestJS application, check out [Mau](https://mau.nestjs.com), our official platform for deploying NestJS applications on AWS. Mau makes deployment straightforward and fast, requiring just a few simple steps:
+A maneira mais simples de testar esta aplicação é usando Docker:
 
 ```bash
-$ npm install -g mau
-$ mau deploy
+# Clonar o repositório
+git clone <url-do-repositorio>
+cd <pasta-do-projeto>
+
+# Iniciar aplicação completa (API + banco de dados)
+docker-compose up -d
+
+# Verificar logs da aplicação
+docker-compose logs -f api
 ```
 
-With Mau, you can deploy your application in just a few clicks, allowing you to focus on building features rather than managing infrastructure.
+Após a inicialização:
+- API estará disponível em: http://localhost:3001
+- Migrations são executadas automaticamente
+- Um usuário de teste é criado (caso configurado)
 
-## Resources
+### Parando a aplicação
 
-Check out a few resources that may come in handy when working with NestJS:
+```bash
+docker-compose down  # Mantém os dados do banco
+# ou
+docker-compose down -v  # Remove volumes (perde dados do banco)
+```
 
-- Visit the [NestJS Documentation](https://docs.nestjs.com) to learn more about the framework.
-- For questions and support, please visit our [Discord channel](https://discord.gg/G7Qnnhy).
-- To dive deeper and get more hands-on experience, check out our official video [courses](https://courses.nestjs.com/).
-- Deploy your application to AWS with the help of [NestJS Mau](https://mau.nestjs.com) in just a few clicks.
-- Visualize your application graph and interact with the NestJS application in real-time using [NestJS Devtools](https://devtools.nestjs.com).
-- Need help with your project (part-time to full-time)? Check out our official [enterprise support](https://enterprise.nestjs.com).
-- To stay in the loop and get updates, follow us on [X](https://x.com/nestframework) and [LinkedIn](https://linkedin.com/company/nestjs).
-- Looking for a job, or have a job to offer? Check out our official [Jobs board](https://jobs.nestjs.com).
+## Como Executar o Projeto
 
-## Support
+### Pré-requisitos
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+- Node.js (v14 ou superior)
+- Docker e Docker Compose (para execução com containers)
+- PostgreSQL (para execução sem Docker)
 
-## Stay in touch
+### Instalação com Docker
 
-- Author - [Kamil Myśliwiec](https://twitter.com/kammysliwiec)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+1. Clone o repositório:
+   ```bash
+   git clone <url-do-repositorio>
+   cd <nome-do-repositorio>
+   ```
 
-## License
+2. Inicie os containers com Docker Compose:
+   ```bash
+   docker-compose up -d
+   ```
 
-Nest is [MIT licensed](https://github.com/nestjs/nest/blob/master/LICENSE).
+3. A API estará disponível em `http://localhost:3001`
+
+### Instalação sem Docker
+
+1. Clone o repositório:
+   ```bash
+   git clone <url-do-repositorio>
+   cd <nome-do-repositorio>
+   ```
+
+2. Instale as dependências:
+   ```bash
+   npm install
+   ```
+
+3. Configure as variáveis de ambiente (crie um arquivo `.env` baseado no `.env.example`)
+
+4. Execute as migrations:
+   ```bash
+   npm run migration:run
+   ```
+
+5. Inicie o servidor:
+   ```bash
+   npm run start:dev
+   ```
+
+6. A API estará disponível em `http://localhost:3001`
+
+## Estrutura do Projeto
+
+```
+src/
+├── auth/             # Módulo de autenticação
+├── categories/       # Módulo de categorias
+├── common/           # Código compartilhado
+├── config/           # Configurações
+├── database/         # Migrations e seeds
+├── summaries/        # Módulo de resumos financeiros
+├── transactions/     # Módulo de lançamentos financeiros
+├── users/            # Módulo de usuários
+├── app.module.ts     # Módulo principal
+└── main.ts           # Ponto de entrada
+```
+
+## Endpoints da API
+
+### Autenticação
+
+- `POST /auth/register` - Registrar novo usuário
+- `POST /auth/login` - Login de usuário
+
+### Categorias
+
+- `GET /categories` - Listar todas as categorias
+- `GET /categories/:id` - Buscar categoria por ID
+- `POST /categories` - Criar nova categoria
+- `PUT /categories/:id` - Atualizar categoria existente
+- `DELETE /categories/:id` - Remover categoria
+
+### Lançamentos Financeiros
+
+- `GET /transactions` - Listar todos os lançamentos
+- `GET /transactions/:id` - Buscar lançamento por ID
+- `POST /transactions` - Criar novo lançamento
+- `PUT /transactions/:id` - Atualizar lançamento existente
+- `DELETE /transactions/:id` - Remover lançamento
+
+### Resumos
+
+- `GET /summaries/monthly?month=X&year=YYYY` - Obter resumo financeiro mensal
+
+## Testes
+
+Execute os testes unitários com o comando:
+
+```bash
+npm run test
+```
+
+Para executar testes com cobertura:
+
+```bash
+npm run test:cov
+```
+
+## Decisões Técnicas e Arquiteturais
+
+### Por que NestJS?
+
+NestJS foi escolhido como framework por oferecer:
+- **Arquitetura modular** com injeção de dependências que facilita a manutenção e testabilidade
+- **Suporte nativo a TypeScript** proporcionando tipagem forte e melhor experiência de desenvolvimento
+- **Integração simplificada** com bibliotecas como TypeORM, Passport e outros
+- **Escalabilidade** através de sua estrutura organizada e módulos independentes
+
+### Decisões de Banco de Dados
+
+PostgreSQL foi selecionado considerando:
+- **Integridade referencial** para garantir consistência nas relações entre entidades
+- **Suporte a tipos ENUM** utilizado para os tipos de transação
+- **Performance em operações de leitura/escrita** importantes para uma aplicação financeira
+- **Maturidade e confiabilidade** para dados sensíveis financeiros
+
+### Estratégia de Autenticação
+
+A autenticação JWT foi implementada porque:
+- **Stateless** - Não requer armazenamento de sessão no servidor
+- **Escalabilidade** - Permite escalar horizontalmente sem compartilhamento de estado
+- **Segurança** - Tokens são assinados e podem ter tempo de expiração
+- **Facilidade de uso no frontend** - Simples de armazenar e enviar em requisições
+
+### Padrões de Projeto Utilizados
+
+- **Repository Pattern** - Abstração da camada de dados para facilitar testes e manutenção
+- **DTO Pattern** - Validação e transformação de dados de entrada/saída
+- **Decorator Pattern** - Utilizado para autorização e recuperação do usuário atual
+- **Service Layer** - Encapsulamento da lógica de negócios separada dos controllers
+
+### Validação e Segurança
+
+- **Class-validator** para validação declarativa de DTOs
+- **Bcrypt** para hashing seguro de senhas
+- **Sanitização de dados** para prevenir injeção SQL e XSS
+- **Isolamento de dados por usuário** para garantir acesso apenas aos próprios recursos
+
+### Decisões de Design de API
+
+- **RESTful** - Endpoints seguem princípios REST para consistência e previsibilidade
+- **Respostas padronizadas** - Formato consistente de respostas para facilitar integração
+- **Validação robusta** - Todas as entradas são validadas antes de processamento
+- **Filtragem e paginação** - Suporte para busca eficiente de dados
+
+## Melhorias Futuras
+
+- Implementação de filtros avançados para transações
+- Paginação de resultados
+- Dashboard com gráficos e estatísticas
+- Upload de comprovantes para transações
+- Categorização automática de transações
+- Exportação de relatórios em CSV/PDF
