@@ -18,14 +18,14 @@ services:
       - DB_USERNAME=postgres
       - DB_PASSWORD=postgres
       - DB_DATABASE=financeapp
-      - JWT_SECRET=
+      - JWT_SECRET=sua_chave_secreta_aqui
       - JWT_EXPIRATION=86400
       - FRONTEND_URL=http://localhost:5173
     volumes:
       - ./:/app
       - /app/node_modules
     command: >
-      sh -c "npm run migration:run && npm run start:dev"
+      sh -c "npm run start:dev"
     restart: unless-stopped
 
   postgres:

@@ -1,6 +1,7 @@
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { DataSource, DataSourceOptions } from 'typeorm';
 import * as dotenv from 'dotenv';
+import * as path from 'path';
 
 dotenv.config();
 
@@ -11,10 +12,10 @@ export const typeOrmConfig: TypeOrmModuleOptions = {
   username: process.env.DB_USERNAME || 'postgres',
   password: process.env.DB_PASSWORD || 'postgres',
   database: process.env.DB_DATABASE || 'financeapp',
-  entities: [__dirname + '/../**/*.entity.{js,ts}'],
-  migrations: [__dirname + '/../database/migrations/*.{js,ts}'],
-  synchronize: process.env.NODE_ENV !== 'production',
-  logging: process.env.NODE_ENV !== 'production',
+  entities: [path.join(__dirname, '..', '**', '*.entity.{js,ts}')],
+  migrations: [path.join(__dirname, '..', 'database', 'migrations', '*.{js,ts}')],
+  synchronize: process.env.NODE_ENV === 'development',
+  logging: process.env.NODE_ENV === 'development',
 };
 
 const dataSourceOptions: DataSourceOptions = {
